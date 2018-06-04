@@ -1,0 +1,11 @@
+.positive{
+    color:green;
+}
+
+.negative{
+    color:red;
+}
+
+.clickHeader{
+    cursor: pointer;
+}

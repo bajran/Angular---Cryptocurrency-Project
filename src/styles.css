@@ -1,1 +1,14 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+
+.btcBlue{
+    color: #6699f6;
+}
+
+
+.borderWhiteAll{
+    border: 2px solid whitesmoke !important;
+}
+
+.borderWhiteBottom{
+    border-bottom: 2px solid whitesmoke !important;
+}

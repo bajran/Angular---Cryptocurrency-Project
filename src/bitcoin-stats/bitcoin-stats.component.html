@@ -1,0 +1,7 @@
+<div class="text-center">
+    <h3 class="" [innerHTML]="bitcoinStats.name"></h3>
+    <h3>{{bitcoinStats.description}}</h3>
+
+</div>
+
+<chart style="height: 500px;" [type]="type" [data]="chartData" [options]="options"></chart>

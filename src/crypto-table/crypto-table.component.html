@@ -1,0 +1,40 @@
+<crypto-filter [cryptos]="top100Cryptos" 
+    (filteredCryptocurrencyEvent)="listenFilterCryptos($event)"
+    (priceUnitEvent)="listenPriceUnit($event)"></crypto-filter>
+
+<table class="table table-dark tabled-striped table-hover borderWhiteAll">
+    <thead class="borderWhiteAll">
+        <tr>
+            <th class="borderWhiteAll clickHeader" 
+            (click)="sortNumericValues(sortValues.rank,'rank'); sortValues.rank = !sortValues.rank">#</th>
+            <th class="borderWhiteAll clickHeader"
+            (click)="sortStringValues(sortValues.name);sortValues.name = !sortValues.name ">Name</th>
+            <th class="borderWhiteAll clickHeader"
+            (click)="sortNumericValues(sortValues.marketCap,'market_cap_usd'); sortValues.marketCap = !sortValues.marketCap">Market Cap</th>
+            <th class="borderWhiteAll clickHeader" *ngIf = "priceUnit==='USD'"
+            (click)="sortNumericValues(sortValues.price,'price_usd'); sortValues.price = !sortValues.price">Price USD</th>
+            <th class="borderWhiteAll clickHeader" *ngIf = "priceUnit==='BTC'"
+            (click)="sortNumericValues(sortValues.price,'price_btc'); sortValues.price = !sortValues.price">Price BTC</th>
+            <th class="borderWhiteAll clickHeader"
+            (click)="sortNumericValues(sortValues.volume,'available_supply'); sortValues.volume = !sortValues.volume">Volume (24h)</th>
+            <th class="borderWhiteAll clickHeader"
+            (click)="sortNumericValues(sortValues.change24h,'percent_change_24h'); sortValues.change24h = !sortValues.change24h">Change (24h)</th>
+            
+        </tr>
+    </thead>
+    <tbody class="borderWhiteAll">
+        <tr *ngFor = "let crypto of filteredCryptocurrency;" 
+        class="borderWhiteAll"
+        [class.negative]="crypto.percent_change_24h < 0"
+        [class.positive]="crypto.percent_change_24h >= 0" >
+            <td class="borderWhiteAll ">{{crypto.rank}}</td>
+            <td class="borderWhiteAll">{{crypto.name}}</td>
+            <td class="borderWhiteAll">{{crypto.market_cap_usd | currency}}</td>
+            <td *ngIf = "priceUnit==='USD'" class="borderWhiteAll">{{crypto.price_usd | currency}}</td>
+            <td *ngIf = "priceUnit==='BTC'" class="borderWhiteAll">{{crypto.price_btc }}</td>
+            <td class="borderWhiteAll">{{crypto.available_supply}}</td>
+            <td class="borderWhiteAll">{{crypto.percent_change_24h * .01 | percent : '1.1-2'}}</td>
+            
+        </tr>
+    </tbody>
+</table>
