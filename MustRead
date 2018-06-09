@@ -1,0 +1,14 @@
+1] Install Bootstrap
+cmd---> npm install bootstrap --save
+
+2] For Bitcoin Chart Install Chart.js
+cmd---> npm install angular2-chartjs 
+for Modification of chart, Please Check chart.js library
+
+3] Below are the API used for real time data of cryptocurrency
+  i] [https://api.coinmarketcap.com/v2/global/]  for Bitcoin market capital in real time
+ ii] [https://api.coinmarketcap.com/v1/ticker/]  for getting all crypto prices in real time
+iii] [https://api.blockchain.info/charts/market-price?cors=true&format=json&lang=en] for bitcoin chart
+
+4] Also add the rxjs in project
+cmd ---> npm install --save rxjs-compat
